@@ -1,0 +1,314 @@
+{
+  "@@locale": "en",
+  "appName": "Password Vault",
+  "vault": "Vault",
+  "passwords": "Passwords",
+  "twoFactorAuth": "2FA / TOTP",
+  "settings": "Settings",
+  
+  "welcome": "Welcome to Your Vault",
+  "newPassword": "New Password",
+  "addNew": "Add New",
+  "search": "Search passwords",
+  "searchIn": "Search",
+  
+  "title": "Title",
+  "titleHint": "E.g. Door Code, Card PIN...",
+  "username": "Username",
+  "usernameOptional": "Username (Optional)",
+  "usernameHint": "Email, cardholder or leave empty",
+  "password": "Password",
+  "passwordOrPin": "Password / PIN",
+  "category": "Category",
+  
+  "categoryGeneral": "General",
+  "categorySocialMedia": "Social Media",
+  "categoryBankFinance": "Bank / Finance",
+  "categoryEcommerce": "E-Commerce",
+  "categoryWorkCorporate": "Work / Corporate",
+  "categoryEmail": "Email",
+  "categoryGaming": "Gaming",
+  "categoryCardId": "Card / ID",
+  "categoryOther": "Other",
+  
+  "save": "Save",
+  "update": "Update",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "edit": "Edit",
+  "copy": "Copy",
+  "show": "Show",
+  "hide": "Hide",
+  
+  "newRecord": "New Record",
+  "updateRecord": "Update Record",
+  "deleteConfirmTitle": "Are you sure you want to delete?",
+  "deleteConfirmMessage": "{label} will be permanently deleted.",
+  "@deleteConfirmMessage": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  
+  "saved": "{label} saved",
+  "@saved": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "updated": "{label} updated",
+  "@updated": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "deleted": "{label} deleted",
+  "@deleted": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  
+  "passwordCopied": "Password copied to clipboard",
+  "codeCopied": "Code copied to clipboard",
+  "generatePassword": "Generate Strong Password",
+  "passwordGenerated": "Strong password generated!",
+  
+  "backup": "Backup / Restore",
+  "exportPasswords": "Export passwords",
+  "exportPasswordsSubtitle": "Save as file",
+  "importPasswords": "Import passwords",
+  "importPasswordsSubtitle": "Restore from your saved file",
+  
+  "encryptBackup": "Encrypt Backup",
+  "decryptBackup": "Decrypt Backup",
+  "backupPassword": "Backup Password",
+  "confirmPassword": "Confirm Password",
+  "encryptAndSave": "Encrypt and Save",
+  "decrypt": "Decrypt",
+  
+  "backupPasswordHint": "Don't forget this password. You'll need it to restore the backup.",
+  "decryptPasswordHint": "Enter the backup password to decrypt the file.",
+  
+  "backupSaved": "Backup securely saved: {path}",
+  "@backupSaved": {
+    "placeholders": {
+      "path": {"type": "String"}
+    }
+  },
+  "backupRestored": "Backup successfully decrypted and loaded",
+  "backupCancelled": "Export cancelled",
+  "noRecordsToBackup": "No records to backup",
+  
+  "pinLock": "PIN Lock",
+  "createPin": "Create PIN",
+  "unlockVault": "Unlock Vault",
+  "pinCreateHint": "Set a 4-digit PIN to protect your vault.",
+  "pinUnlockHint": "Enter your 4-digit PIN to unlock.",
+  "pinLabel": "PIN",
+  "pinConfirm": "Confirm PIN",
+  "unlock": "Unlock",
+  "savePin": "Save PIN",
+  "resetPin": "Reset PIN",
+  "lockApp": "Lock",
+  
+  "pin4Digits": "PIN must be 4 digits",
+  "pinMismatch": "PINs don't match",
+  "pinIncorrect": "Incorrect PIN",
+  
+  "biometricLogin": "Biometric Login",
+  "biometricReason": "Use fingerprint or face to unlock your vault",
+  
+  "add2FA": "Add 2FA",
+  "manualAdd": "Manual add",
+  "scanQR": "Scan QR code",
+  "no2FARecords": "No 2FA records yet",
+  "no2FADescription": "Add code generation for Epic Games, Google, Apple and other accounts here.",
+  "addFirstAccount": "Add first account",
+  
+  "secretKey": "Secret Key",
+  "issuer": "Issuer",
+  "accountLabel": "Account Label",
+  "period": "Period (seconds)",
+  "digits": "Digit Count",
+  
+  "invalidQRCode": "Invalid or unsupported QR code",
+  "cameraPermissionDenied": "Camera permission denied",
+  
+  "securityWarning": "Security Warning",
+  "rootDetectedMessage": "Root or unsafe configuration detected on your device. For your security, the app cannot run on this device.",
+  "close": "Close",
+  
+  "emptyState": "No records yet",
+  "emptyStateDescription": "Add your first record to securely store your passwords.",
+  
+  "validationTitleRequired": "Title is required",
+  "validationPasswordRequired": "Password cannot be empty",
+  "validationPasswordMin6": "Must be at least 6 characters",
+  "validationPasswordsMismatch": "Passwords don't match",
+  "validationSecretRequired": "Secret key is required",
+  "validationPeriodInvalid": "Enter a valid period",
+  "validationDigitsInvalid": "Digit count must be between 6-8",
+  
+  "daysAgo": "{count} days ago",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "hoursAgo": "{count} hours ago",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "minutesAgo": "{count} min ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "justNow": "just now",
+  
+  "strongPasswordGenerated": "Strong password generated!",
+  "categorySocial": "Social Media",
+  "categoryBanking": "Banking / Finance",
+  "categoryWork": "Work / Corporate",
+  "categoryCard": "Card / ID",
+  "usernameHelper": "Email, cardholder, or leave blank",
+  "passwordPin": "Password / PIN",
+  "generateStrongPassword": "Generate Strong Password",
+  "noRecordsYet": "No records yet",
+  "emptyStateMessage": "Add your first password to start filling your vault.",
+  "recordsCount": "{count} records",
+  "@recordsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "welcomeTitle": "Welcome to Your Password Vault",
+  "welcomeSubtitle": "Keep your passwords safe, find them in seconds when you need.",
+  "backupRestore": "Backup / Restore",
+  "user": "User",
+  "searchHint": "Search in passwords",
+  
+  "updateTwoFactor": "Update 2FA Record",
+  "newTwoFactor": "New 2FA Record",
+  "accountName": "Account Name",
+  "accountNameHint": "e.g. Epic Games",
+  "validationAccountNameRequired": "Account name is required",
+  "servicePlatformOptional": "Service / Platform (optional)",
+  "secretKeyHint": "JBSWY3DPEHPK3PXP...",
+  "validationSecretKeyRequired": "Secret key is required",
+  "validationSecretKeyTooShort": "Enter a longer key",
+  "periodSeconds": "Period (sec)",
+  "validationPeriodInvalid": "Enter valid period",
+  "validationDigitsRange": "Must be between 4-8",
+  
+  "scanQRInstructions": "Scan the QR code by placing it inside the frame. The account will be added automatically.",
+  "pinResetMessage": "PIN has been reset. Please set a new PIN.",
+  "twoFactor": "2FA",
+  "twoFactorAdded": "{label} added",
+  "@twoFactorAdded": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "twoFactorUpdated": "{label} updated",
+  "@twoFactorUpdated": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "deleteRecord": "Delete Record",
+  "confirmDelete2FA": "Are you sure you want to delete 2FA record for {label}?",
+  "@confirmDelete2FA": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "twoFactorDeleted": "{label} deleted",
+  "@twoFactorDeleted": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "twoFactorTitle": "2FA / TOTP",
+  "lock": "Lock",
+  "addTwoFactor": "Add 2FA",
+  "noTwoFactorYet": "No 2FA records yet",
+  "emptyTwoFactorMessage": "Add code generation for Epic Games, Google, Apple, and other accounts here.",
+  
+  "secureNotes": "Secure Notes",
+  "notes": "Notes",
+  "newNote": "New Note",
+  "updateNote": "Update Note",
+  "noteTitle": "Title",
+  "noteTitleHint": "e.g. Wi-Fi Password, Tax Number...",
+  "noteContent": "Content",
+  "noteContentHint": "Write your note content here...",
+  "validationNoteTitleRequired": "Title is required",
+  "validationNoteContentRequired": "Content is required",
+  
+  "noteCategoryPersonal": "Personal",
+  "noteCategoryWifi": "Wi-Fi",
+  "noteCategoryCrypto": "Crypto",
+  "noteCategoryTax": "Tax / Financial",
+  "noteCategoryDocuments": "Documents",
+  "noteCategoryOther": "Other",
+  
+  "noteSaved": "{title} saved",
+  "@noteSaved": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "noteUpdated": "{title} updated",
+  "@noteUpdated": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "noteDeleted": "{title} deleted",
+  "@noteDeleted": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "deleteNoteConfirmMessage": "{title} note will be permanently deleted.",
+  "@deleteNoteConfirmMessage": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  
+  "noNotesYet": "No notes yet",
+  "emptyNotesMessage": "Add your first secure note to get started.",
+  "searchNotesHint": "Search in notes",
+  "contentCopied": "Content copied to clipboard",
+  "updatedAt": "Updated",
+  
+  "settings": "Settings",
+  "appearance": "Appearance",
+  "theme": "Theme",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "language": "Language",
+  "dataManagement": "Data Management",
+  "exportData": "Export Data",
+  "exportDataSubtitle": "Backup all passwords and notes",
+  "importData": "Import Data",
+  "importDataSubtitle": "Restore from backup",
+  "importWarning": "Current data will be merged with the backup content. Do you want to continue?",
+  "continueAction": "Continue",
+  "recordsBackedUp": "records backed up",
+  "recordsImported": "records imported",
+  "security": "Security",
+  "resetPinSubtitle": "Change your PIN code",
+  "resetPinConfirmMessage": "Are you sure you want to reset your PIN? You will need to create a new one.",
+  "reset": "Reset",
+  "about": "About",
+  "appVersion": "App Version"
+}
+

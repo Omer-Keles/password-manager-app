@@ -1,0 +1,314 @@
+{
+  "@@locale": "tr",
+  "appName": "Şifre Kasası",
+  "vault": "Kasa",
+  "passwords": "Şifreler",
+  "twoFactorAuth": "2FA / TOTP",
+  "settings": "Ayarlar",
+  
+  "welcome": "Şifre Kasana Hoş Geldin",
+  "newPassword": "Yeni Şifre",
+  "addNew": "Yeni Ekle",
+  "search": "Şifreler içinde ara",
+  "searchIn": "Ara",
+  
+  "title": "Başlık",
+  "titleHint": "Örn. Apartman Kapısı, Kart PIN...",
+  "username": "Kullanıcı Adı",
+  "usernameOptional": "Kullanıcı Adı (İsteğe Bağlı)",
+  "usernameHint": "E-posta, kart sahibi veya boş",
+  "password": "Şifre",
+  "passwordOrPin": "Şifre / PIN",
+  "category": "Kategori",
+  
+  "categoryGeneral": "Genel",
+  "categorySocialMedia": "Sosyal Medya",
+  "categoryBankFinance": "Banka / Finans",
+  "categoryEcommerce": "E-Ticaret",
+  "categoryWorkCorporate": "İş / Kurumsal",
+  "categoryEmail": "E-Posta",
+  "categoryGaming": "Oyun",
+  "categoryCardId": "Kart / Kimlik",
+  "categoryOther": "Diğer",
+  
+  "save": "Kaydet",
+  "update": "Güncelle",
+  "delete": "Sil",
+  "cancel": "Vazgeç",
+  "edit": "Düzenle",
+  "copy": "Kopyala",
+  "show": "Göster",
+  "hide": "Gizle",
+  
+  "newRecord": "Yeni Kayıt",
+  "updateRecord": "Kaydı Güncelle",
+  "deleteConfirmTitle": "Silmek istediğine emin misin?",
+  "deleteConfirmMessage": "{label} kaydı kalıcı olarak silinecek.",
+  "@deleteConfirmMessage": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  
+  "saved": "{label} kaydedildi",
+  "@saved": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "updated": "{label} güncellendi",
+  "@updated": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "deleted": "{label} silindi",
+  "@deleted": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  
+  "passwordCopied": "Şifre panoya kopyalandı",
+  "codeCopied": "Kod panoya kopyalandı",
+  "generatePassword": "Güçlü Şifre Oluştur",
+  "passwordGenerated": "Güçlü şifre oluşturuldu!",
+  
+  "backup": "Yedekle / İçeri Al",
+  "exportPasswords": "Şifreleri dışa aktar",
+  "exportPasswordsSubtitle": "Dosya olarak kaydet",
+  "importPasswords": "Şifreleri içe aktar",
+  "importPasswordsSubtitle": "Kaydettiğin dosyadan geri yükle",
+  
+  "encryptBackup": "Yedeği Şifrele",
+  "decryptBackup": "Yedeği Çöz",
+  "backupPassword": "Yedekleme Parolası",
+  "confirmPassword": "Parolayı Doğrula",
+  "encryptAndSave": "Şifrele ve Kaydet",
+  "decrypt": "Şifreyi Çöz",
+  
+  "backupPasswordHint": "Bu parolayı sakın unutma. Yedeği geri yüklemek için buna ihtiyacın olacak.",
+  "decryptPasswordHint": "Dosyayı çözmek için yedekleme parolasını gir.",
+  
+  "backupSaved": "Yedek güvenli bir şekilde kaydedildi: {path}",
+  "@backupSaved": {
+    "placeholders": {
+      "path": {"type": "String"}
+    }
+  },
+  "backupRestored": "Yedek başarıyla çözüldü ve yüklendi",
+  "backupCancelled": "Dışa aktarma iptal edildi",
+  "noRecordsToBackup": "Yedeklenecek kayıt bulunamadı",
+  
+  "pinLock": "PIN Kilidi",
+  "createPin": "PIN oluştur",
+  "unlockVault": "Kasayı aç",
+  "pinCreateHint": "Kasayı korumak için 4 haneli bir PIN belirle.",
+  "pinUnlockHint": "Kasanı açmak için 4 haneli PIN'ini gir.",
+  "pinLabel": "PIN",
+  "pinConfirm": "PIN tekrar",
+  "unlock": "Kilidi Aç",
+  "savePin": "PIN'i Kaydet",
+  "resetPin": "PIN'i sıfırla",
+  "lockApp": "Kilitle",
+  
+  "pin4Digits": "PIN 4 haneli olmalı",
+  "pinMismatch": "PIN eşleşmiyor",
+  "pinIncorrect": "PIN hatalı",
+  
+  "biometricLogin": "Biyometrik Giriş",
+  "biometricReason": "Kasanı açmak için parmak izi veya yüzünü kullan",
+  
+  "add2FA": "2FA ekle",
+  "manualAdd": "Manuel ekle",
+  "scanQR": "QR kod tara",
+  "no2FARecords": "Henüz 2FA kaydı yok",
+  "no2FADescription": "Epic Games, Google, Apple ve diğer hesaplar için kod üretimini buradan ekleyebilirsin.",
+  "addFirstAccount": "İlk hesabı ekle",
+  
+  "secretKey": "Gizli Anahtar",
+  "issuer": "Sağlayıcı",
+  "accountLabel": "Hesap Etiketi",
+  "period": "Süre (saniye)",
+  "digits": "Basamak Sayısı",
+  
+  "invalidQRCode": "QR kod geçersiz veya desteklenmiyor",
+  "cameraPermissionDenied": "Kamera izni reddedildi",
+  
+  "securityWarning": "Güvenlik Uyarısı",
+  "rootDetectedMessage": "Cihazınızda Root veya güvensiz yapılandırma tespit edildi. Güvenliğiniz için uygulama bu cihazda çalıştırılamaz.",
+  "close": "Kapat",
+  
+  "emptyState": "Henüz kayıt yok",
+  "emptyStateDescription": "Şifrelerini güvenle saklamak için ilk kaydını ekle.",
+  
+  "validationTitleRequired": "Başlık zorunlu",
+  "validationPasswordRequired": "Şifre alanı boş bırakılamaz",
+  "validationPasswordMin6": "En az 6 karakter olmalı",
+  "validationPasswordsMismatch": "Parolalar eşleşmiyor",
+  "validationSecretRequired": "Gizli anahtar gerekli",
+  "validationPeriodInvalid": "Geçerli bir süre gir",
+  "validationDigitsInvalid": "Basamak sayısı 6-8 arası olmalı",
+  
+  "daysAgo": "{count} gün önce",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "hoursAgo": "{count} saat önce",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "minutesAgo": "{count} dk önce",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "justNow": "az önce",
+  
+  "strongPasswordGenerated": "Güçlü şifre oluşturuldu!",
+  "categorySocial": "Sosyal Medya",
+  "categoryBanking": "Banka / Finans",
+  "categoryWork": "İş / Kurumsal",
+  "categoryCard": "Kart / Kimlik",
+  "usernameHelper": "E-posta, kart sahibi veya boş",
+  "passwordPin": "Şifre / PIN",
+  "generateStrongPassword": "Güçlü Şifre Oluştur",
+  "noRecordsYet": "Henüz kayıt yok",
+  "emptyStateMessage": "İlk şifreni ekleyerek kasanı doldurmaya başla.",
+  "recordsCount": "{count} kayıt",
+  "@recordsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "welcomeTitle": "Şifre Kasana Hoş Geldin",
+  "welcomeSubtitle": "Şifrelerini güvende tut, gerektiğinde saniyeler içinde bul.",
+  "backupRestore": "Yedekle / İçeri Al",
+  "user": "Kullanıcı",
+  "searchHint": "Şifreler içinde ara",
+  
+  "updateTwoFactor": "2FA Kaydını Güncelle",
+  "newTwoFactor": "Yeni 2FA Kaydı",
+  "accountName": "Hesap Adı",
+  "accountNameHint": "Örn. Epic Games",
+  "validationAccountNameRequired": "Hesap adı zorunlu",
+  "servicePlatformOptional": "Servis / Platform (opsiyonel)",
+  "secretKeyHint": "JBSWY3DPEHPK3PXP...",
+  "validationSecretKeyRequired": "Gizli anahtar gerekli",
+  "validationSecretKeyTooShort": "Daha uzun bir anahtar girin",
+  "periodSeconds": "Süre (sn)",
+  "validationPeriodInvalid": "Geçerli süre girin",
+  "validationDigitsRange": "4-8 arası olmalı",
+  
+  "scanQRInstructions": "QR kodu kare içine alarak taratın. Kod taranır taranmaz hesap kaydedilir.",
+  "pinResetMessage": "PIN sıfırlandı. Yeni PIN belirleyin.",
+  "twoFactor": "2FA",
+  "twoFactorAdded": "{label} eklendi",
+  "@twoFactorAdded": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "twoFactorUpdated": "{label} güncellendi",
+  "@twoFactorUpdated": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "deleteRecord": "Kaydı Sil",
+  "confirmDelete2FA": "{label} için 2FA kaydını silmek istediğine emin misin?",
+  "@confirmDelete2FA": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "twoFactorDeleted": "{label} silindi",
+  "@twoFactorDeleted": {
+    "placeholders": {
+      "label": {"type": "String"}
+    }
+  },
+  "twoFactorTitle": "2FA / TOTP",
+  "lock": "Kilitle",
+  "addTwoFactor": "2FA ekle",
+  "noTwoFactorYet": "Henüz 2FA kaydı yok",
+  "emptyTwoFactorMessage": "Epic Games, Google, Apple ve diğer hesaplar için kod üretimini buradan ekleyebilirsin.",
+  
+  "secureNotes": "Güvenli Notlar",
+  "notes": "Notlar",
+  "newNote": "Yeni Not",
+  "updateNote": "Notu Güncelle",
+  "noteTitle": "Başlık",
+  "noteTitleHint": "Örn. Wi-Fi Şifresi, Vergi Numarası...",
+  "noteContent": "İçerik",
+  "noteContentHint": "Not içeriğini buraya yaz...",
+  "validationNoteTitleRequired": "Başlık zorunlu",
+  "validationNoteContentRequired": "İçerik zorunlu",
+  
+  "noteCategoryPersonal": "Kişisel",
+  "noteCategoryWifi": "Wi-Fi",
+  "noteCategoryCrypto": "Kripto",
+  "noteCategoryTax": "Vergi / Mali",
+  "noteCategoryDocuments": "Belgeler",
+  "noteCategoryOther": "Diğer",
+  
+  "noteSaved": "{title} kaydedildi",
+  "@noteSaved": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "noteUpdated": "{title} güncellendi",
+  "@noteUpdated": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "noteDeleted": "{title} silindi",
+  "@noteDeleted": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "deleteNoteConfirmMessage": "{title} notu kalıcı olarak silinecek.",
+  "@deleteNoteConfirmMessage": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  
+  "noNotesYet": "Henüz not yok",
+  "emptyNotesMessage": "İlk güvenli notunu ekleyerek başla.",
+  "searchNotesHint": "Notlar içinde ara",
+  "contentCopied": "İçerik panoya kopyalandı",
+  "updatedAt": "Güncelleme",
+  
+  "settings": "Ayarlar",
+  "appearance": "Görünüm",
+  "theme": "Tema",
+  "themeSystem": "Sistem",
+  "themeLight": "Aydınlık",
+  "themeDark": "Karanlık",
+  "language": "Dil",
+  "dataManagement": "Veri Yönetimi",
+  "exportData": "Verileri Dışa Aktar",
+  "exportDataSubtitle": "Tüm şifreleri ve notları yedekle",
+  "importData": "Verileri İçe Aktar",
+  "importDataSubtitle": "Yedekten geri yükle",
+  "importWarning": "Mevcut veriler yedeğin içeriği ile birleştirilecek. Devam etmek istiyor musun?",
+  "continueAction": "Devam Et",
+  "recordsBackedUp": "kayıt yedeklendi",
+  "recordsImported": "kayıt içe aktarıldı",
+  "security": "Güvenlik",
+  "resetPinSubtitle": "PIN kodunu değiştir",
+  "resetPinConfirmMessage": "PIN kodunu sıfırlamak istediğine emin misin? Yeni bir PIN oluşturman gerekecek.",
+  "reset": "Sıfırla",
+  "about": "Hakkında",
+  "appVersion": "Uygulama Sürümü"
+}
+
