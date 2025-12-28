@@ -4,6 +4,7 @@ import 'package:local_auth/local_auth.dart';
 import '../l10n/app_localizations.dart';
 
 import '../services/pin_service.dart';
+import '../services/session_key_manager.dart';
 import '../widgets/pin_input.dart';
 import 'home_shell.dart';
 
@@ -76,6 +77,9 @@ class _PinLockScreenState extends State<PinLockScreen> {
 
     if (!mounted) return;
     if (authenticated) {
+      // Biyometrik başarılı - master key'i de yüklememiz gerekiyor
+      // Ancak PIN'i bilmiyoruz, bu nedenle biyometrik sadece UI kilidini açar
+      // Veri erişimi için yine de master key gerekecek (ilk PIN girişinde set edilir)
       setState(() {
         _unlocked = true;
         _error = null;
@@ -93,11 +97,19 @@ class _PinLockScreenState extends State<PinLockScreen> {
     final success = await _pinService.verifyPin(pin);
     if (!mounted) return;
     if (success) {
-      setState(() {
-        _unlocked = true;
-        _error = null;
-      });
-      _pinController.clear();
+      // PIN doğru - master key'i türet ve session'a kaydet
+      try {
+        final masterKey = await _pinService.deriveMasterKey(pin);
+        SessionKeyManager.instance.setMasterKey(masterKey);
+
+        setState(() {
+          _unlocked = true;
+          _error = null;
+        });
+        _pinController.clear();
+      } catch (e) {
+        setState(() => _error = 'Master key türetilemedi: $e');
+      }
     } else {
       setState(() => _error = l10n.pinIncorrect);
     }
@@ -116,6 +128,16 @@ class _PinLockScreenState extends State<PinLockScreen> {
       return;
     }
     await _pinService.savePin(pin);
+
+    // İlk PIN oluşturulduğunda master key'i de türet ve session'a kaydet
+    try {
+      final masterKey = await _pinService.deriveMasterKey(pin);
+      SessionKeyManager.instance.setMasterKey(masterKey);
+    } catch (e) {
+      setState(() => _error = 'Master key türetilemedi: $e');
+      return;
+    }
+
     if (!mounted) return;
     setState(() {
       _hasPin = true;
@@ -126,6 +148,9 @@ class _PinLockScreenState extends State<PinLockScreen> {
   }
 
   void _lock() {
+    // Master key'i temizle (güvenlik)
+    SessionKeyManager.instance.clear();
+
     setState(() {
       _unlocked = false;
       _pinController.clear();

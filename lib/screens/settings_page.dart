@@ -11,6 +11,7 @@ import '../l10n/app_localizations.dart';
 import '../services/backup_service.dart';
 import '../services/notes_repository.dart';
 import '../services/password_repository.dart';
+import '../services/session_key_manager.dart';
 import '../services/twofa_repository.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -45,6 +46,16 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _handleExport() async {
     final l10n = AppLocalizations.of(context)!;
     if (_isProcessing) return;
+
+    // Master key kontrolü (veriler şifreli kaydedildiği için gerekli)
+    if (!SessionKeyManager.instance.hasKey) {
+      _showSnackBar(
+        'Oturum süresi dolmuş - lütfen yeniden giriş yapın',
+        isError: true,
+      );
+      return;
+    }
+
     setState(() => _isProcessing = true);
 
     try {
@@ -87,7 +98,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
         await Share.shareXFiles(
           [XFile(tempFile.path)],
-          subject: 'Password Vault Backup',
+          subject: 'LocalPass Backup',
           text: '$total ${l10n.recordsBackedUp}',
         );
 
@@ -127,6 +138,15 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _handleImport() async {
     final l10n = AppLocalizations.of(context)!;
     if (_isProcessing) return;
+
+    // Master key kontrolü (veriler şifreli kaydedileceği için gerekli)
+    if (!SessionKeyManager.instance.hasKey) {
+      _showSnackBar(
+        'Oturum süresi dolmuş - lütfen yeniden giriş yapın',
+        isError: true,
+      );
+      return;
+    }
 
     // Onay dialog'u
     final confirm = await showDialog<bool>(
@@ -320,7 +340,7 @@ class _SettingsPageState extends State<SettingsPage> {
         .replaceAll(':', '-')
         .split('.')
         .first;
-    return 'password-vault-$timestamp.vault';
+    return 'localpass-backup-$timestamp.vault';
   }
 
   @override

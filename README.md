@@ -1,64 +1,61 @@
-# Şifre Kasam 🔐
+# LocalPass 🔐
 
-Flutter ile geliştirilen kapsamlı bir güvenlik uygulaması. Şifrelerinizi, güvenli notlarınızı ve 2FA kodlarınızı cihazınızda şifreli olarak saklayın.
+Local-only şifre kasası: Şifreler, güvenli notlar ve 2FA (TOTP) kodları buluta gitmeden, sadece cihazınızda AES-256-GCM ile şifreli saklanır.
 
 ## ✨ Özellikler
 
-### 🔒 Güvenli Şifre Yönetimi
+### 🔒 Şifreler
 
-- **PIN Kilidi**: 4 haneli PIN ile uygulama girişi
-- **Biyometrik Giriş**: Parmak izi / Face ID / Touch ID desteği
-- **Şifrelenmiş Depolama**: `flutter_secure_storage` ile AES şifreleme
-- **CRUD İşlemleri**: Şifre ekleme, düzenleme, silme, arama
-- **Kategori Sistemi**: Banka, E-posta, Sosyal Medya, Oyun, Kart vb.
-- **Güçlü Şifre Üreteci**: Otomatik güvenli şifre oluşturma
+- PIN + biyometrik giriş (parmak izi / Face ID / Touch ID)
+- **AES‑256‑GCM** ile şifreli depolama (her veri AES-GCM ile şifrelenir)
+- PIN'den PBKDF2 (100k iterasyon) ile master key türetilir
+- Master key oturum boyunca bellekte tutulur, lock/logout'ta temizlenir
+- CRUD + arama, kategori (Banka, E-posta, Sosyal Medya, Oyun, Kart vb.)
+- Güçlü şifre üretici, kopyalama
 
 ### 📝 Güvenli Notlar
 
-- **Özel Metin Saklama**: Wi-Fi şifreleri, vergi numaraları, kripto seed phrase'ler
-- **Kategorize Notlar**: Kişisel, Wi-Fi, Kripto, Vergi, Belgeler
-- **Tam Metin Arama**: Notlar içinde anında arama
-- **Kopyalama**: İçeriği tek tıkla panoya kopyalama
+- Kategoriler: Kişisel, Wi‑Fi, Kripto, Vergi, Belgeler
+- Tam metin arama, içerik kopyalama
 
-### 🔐 2FA / TOTP Yöneticisi
+### 🔐 2FA / TOTP
 
-- **QR Kod Tarama**: Kamera ile otomatik hesap ekleme
-- **Manuel Girdi**: Gizli anahtar ile manuel ekleme
-- **Gerçek Zamanlı Kodlar**: 6-8 haneli TOTP kod üretimi
-- **Çoklu Hesap**: Epic Games, Google, Apple, GitHub vb.
+- QR kod tarama ile otomatik ekleme
+- Manuel giriş (varsayılan 6 hane; QR ile 6/8 hane desteklenir)
+- Gerçek zamanlı kod üretimi, çoklu hesap
 
-### 💾 Yedekleme & Geri Yükleme
+### 💾 Yedekleme
 
-- **Şifreli Yedek**: AES-GCM ile `.vault` dosyası
-- **Dosya Tabanlı**: Kullanıcının seçtiği konuma kaydetme
-- **Parola Korumalı**: Yedek dosyası için ayrı parola
-- **Cross-Platform**: Android, iOS, Windows, macOS, Linux
+- AES‑GCM 256 ile şifreli `.vault` dosyası
+- Parola korumalı, paylaşım menüsüyle dışa aktarma (Android/iOS)
+- İçeri alma: Parola doğrulaması sonrası tüm verileri yükler
 
-### 🎨 Modern Arayüz
+### 🎨 Arayüz
 
-- **Material 3**: Google'ın en yeni tasarım dili
-- **Dark Mode**: Karanlık ve aydınlık tema
-- **Çok Dilli**: Türkçe ve İngilizce tam destek
-- **Responsive**: Tablet ve telefon uyumlu
-- **Smooth Animasyonlar**: Akıcı geçişler ve efektler
+- Material 3, uyumlu açık/koyu tema
+- Türkçe ve İngilizce tam yerelleştirme
+- Responsive (telefon/tablet)
 
 ### 🛡️ Güvenlik
 
-- **Root/Jailbreak Algılama**: Tehlikeli cihazlarda çalışmaz
-- **Şifreli Depolama**: Tüm veriler AES ile korunur
-- **Hiç Şifre Gösterilmez**: Sabit uzunlukta maskeleme
-- **Güvenli Silme**: Onay dialogları ile yanlışlıkla silme engeli
+- **Defense in Depth**: Veriler çift katmanlı şifreleme ile korunur
+  1. AES‑GCM‑256 uygulama katmanında (master key ile)
+  2. Platform şifrelemesi (Keystore/Keychain) depolama katmanında
+- PIN'den PBKDF2 (100k iterasyon) ile master key türetimi
+- Root tespiti (Android) – güvensiz cihazlarda çalışmaz
+- Akıllı arka plan kilitleme:
+  - 30 saniyeden az: kilitleme yok (dosya seçici vb. için)
+  - 30+ saniye arka planda: otomatik kilit
+- Screenshot / ekran kaydı engelleme (Android), iOS app switcher gizleme
+- Yedekler PBKDF2 (100k iterasyon) + AES‑GCM 256 ile korunur
+- Bütünlük doğrulama: MAC ile veri manipülasyonu tespiti
 
 ## 📱 Navigasyon
 
-Uygulama 4 ana sekme + ortada kilit butonu ile kullanılır:
-
-1. **Şifreler**: Tüm şifre kayıtlarınız
-2. **Notlar**: Güvenli metin notları
-3. **2FA**: İki faktörlü kimlik doğrulama kodları
-4. **Ayarlar**: Tema, dil, yedekleme, PIN sıfırlama
-
-**Ortadaki Kilit** 🔒: Uygulamayı anında kilitler
+- **Şifreler**
+- **Notlar**
+- **2FA**
+- **Ayarlar**
 
 ## 🚀 Kurulum
 
@@ -66,93 +63,78 @@ Uygulama 4 ana sekme + ortada kilit butonu ile kullanılır:
 # Bağımlılıkları yükle
 flutter pub get
 
-# Localization dosyalarını oluştur
+# Yerelleştirme üret (l10n.yaml var)
 flutter gen-l10n
 
-# Uygulamayı çalıştır
+# Çalıştır
 flutter run
 
-# Release build (Android)
+# Release build
 flutter build apk --release
-
-# Release build (iOS)
 flutter build ios --release
 ```
 
-## 🧪 Test
+## 🧪 Test & Analiz
 
 ```bash
-# Tüm testleri çalıştır
 flutter test
-
-# Kod analizi
 flutter analyze
-
-# Kod formatı
 dart format lib
 ```
 
 ## 🌐 Yerelleştirme
 
-Uygulama şu dilleri destekler:
-
-- 🇹🇷 Türkçe (Varsayılan)
+- 🇹🇷 Türkçe (varsayılan)
 - 🇬🇧 İngilizce
 
-Sistem diline göre otomatik algılama yapar.
-
-## 📋 Teknik Detaylar
-
-### Kullanılan Paketler
-
-- `flutter_secure_storage`: Şifreli veri depolama
-- `cryptography`: AES-GCM şifreleme
-- `local_auth`: Biyometrik kimlik doğrulama
-- `mobile_scanner`: QR kod tarama
-- `file_picker`: Dosya seçme/kaydetme
-- `otp`: TOTP kod üretimi
-- `uuid`: Benzersiz ID oluşturma
-- `google_fonts`: Özel fontlar
-
-### Mimari
+## 📋 Mimari
 
 ```
 lib/
-├── models/          # Veri modelleri
-├── services/        # İş mantığı katmanı
-├── screens/         # Sayfa widget'ları
-├── widgets/         # Yeniden kullanılabilir bileşenler
-├── theme/           # Tema tanımlamaları
-├── l10n/            # Yerelleştirme dosyaları
-└── utils/           # Yardımcı fonksiyonlar
+├── models/      # Veri modelleri
+├── services/    # İş mantığı / depolama
+├── screens/     # Sayfalar
+├── widgets/     # Yeniden kullanılabilir bileşenler
+├── theme/       # Tema
+├── l10n/        # Yerelleştirme
+└── utils/       # Yardımcılar
 ```
 
-## 🔐 Güvenlik Özellikleri
+### Kullanılan Başlıca Paketler
 
-1. **Veri Şifreleme**: Tüm şifreler ve notlar AES ile şifrelenir
-2. **PIN Koruması**: 4 haneli PIN ile giriş zorunluluğu
-3. **Biyometrik**: Fingerprint/Face ID ile hızlı giriş
-4. **Root Algılama**: Root/jailbreak tespit edilirse uygulama açılmaz
-5. **Yedek Şifreleme**: Dışa aktarılan dosyalar AES-GCM ile korunur
-6. **Güvenli Silme**: Tüm hassas veriler bellekten temizlenir
+- flutter_secure_storage, cryptography (AES‑GCM, PBKDF2)
+- local_auth (biyometrik)
+- mobile_scanner (QR)
+- file_picker, share_plus, path_provider (yedekleme paylaşım/kayıt)
+- otp (TOTP), uuid, google_fonts
+
+## 🔐 Güvenlik Özeti
+
+1. **Veri şifreleme**:
+   - Uygulama katmanı: AES‑256‑GCM (master key ile)
+   - Depolama katmanı: Platform şifrelemesi (Keystore/Keychain)
+2. **Anahtar yönetimi**: PIN → PBKDF2 (100k) → Master Key → RAM (oturum)
+3. PIN + biyometrik giriş zorunlu
+4. **Akıllı arka plan kilidi**:
+   - < 30 sn: kilitleme yok (UX için)
+   - ≥ 30 sn: otomatik kilit + master key temizleme
+5. Screenshot/record engeli (Android), iOS app switcher gizleme
+6. Yedekler: PBKDF2 (100k) + AES‑GCM 256
+7. Root tespiti (Android)
+8. Bütünlük doğrulama: MAC ile tamper detection
 
 ## 📸 Ekran Görüntüleri
 
-_(Ekran görüntüleri buraya eklenecek)_
+_(Eklenecek)_
 
 ## 📄 Lisans
 
 MIT License
 
-## 👨‍💻 Geliştirici
+## 👨‍💻 Not
 
-Bu proje AI asistanı ile birlikte geliştirilmiştir.
+Bu uygulama hassas verileri saklar:
 
----
-
-**Not**: Bu uygulama hassas verileri saklar. Lütfen:
-
-- PIN'inizi unutmayın
-- Yedek dosyalarınızı güvenli tutun
-- Yedek parolanızı kaydedin
+- PIN ve yedek parolasını kaybetmeyin
+- Yedek dosyalarını güvenli konumda tutun
 - Düzenli yedek alın

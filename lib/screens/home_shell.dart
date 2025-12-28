@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/pin_service.dart';
+import '../services/session_key_manager.dart';
 import 'notes_page.dart';
 import 'password_home_page.dart';
 import 'settings_page.dart';
@@ -54,6 +55,10 @@ class _HomeShellState extends State<HomeShell> {
     final l10n = AppLocalizations.of(context)!;
     if (_pinResetInProgress) return;
     setState(() => _pinResetInProgress = true);
+
+    // Master key'i temizle
+    SessionKeyManager.instance.clear();
+
     await widget.pinService.clear();
     if (!mounted) return;
     ScaffoldMessenger.of(context)

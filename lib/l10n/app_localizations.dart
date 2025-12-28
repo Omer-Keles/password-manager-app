@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In tr, this message translates to:
-  /// **'Şifre Kasası'**
+  /// **'LocalPass'**
   String get appName;
 
   /// No description provided for @vault.

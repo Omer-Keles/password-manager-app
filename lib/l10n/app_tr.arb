@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "appName": "Şifre Kasası",
+  "appName": "LocalPass",
   "vault": "Kasa",
   "passwords": "Şifreler",
   "twoFactorAuth": "2FA / TOTP",

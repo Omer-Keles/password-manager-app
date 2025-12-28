@@ -4,7 +4,9 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'l10n/app_localizations.dart';
+import 'screens/home_shell.dart';
 import 'screens/pin_lock_screen.dart';
+import 'services/pin_service.dart';
 import 'theme/app_theme.dart';
 
 class PasswordKeeperApp extends StatefulWidget {
@@ -19,6 +21,7 @@ class PasswordKeeperApp extends StatefulWidget {
 class _PasswordKeeperAppState extends State<PasswordKeeperApp>
     with WidgetsBindingObserver {
   final _storage = const FlutterSecureStorage();
+  final _pinService = PinService();
   ThemeMode _themeMode = ThemeMode.system;
   Locale _locale = const Locale('tr');
   bool _isLoading = true;
@@ -26,6 +29,7 @@ class _PasswordKeeperAppState extends State<PasswordKeeperApp>
   // Background koruma için key - değiştiğinde PinLockScreen yeniden oluşturulur
   Key _pinScreenKey = UniqueKey();
   bool _wasInBackground = false;
+  DateTime? _backgroundTime;
 
   @override
   void initState() {
@@ -44,13 +48,29 @@ class _PasswordKeeperAppState extends State<PasswordKeeperApp>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
 
+    if (!widget.enablePinLock) return;
+
     // Sadece paused: Uygulama tamamen arka plana alındığında
     // (inactive değil - o dialog/klavye için de tetiklenir)
     if (state == AppLifecycleState.paused) {
       _wasInBackground = true;
+      _backgroundTime = DateTime.now();
     } else if (state == AppLifecycleState.resumed && _wasInBackground) {
-      // Uygulama ön plana geldi - kilitle
+      // Uygulama ön plana geldi
       _wasInBackground = false;
+
+      // 30 saniyeden az arka planda kaldıysa kilitleme
+      // (FilePicker, Share gibi sistem UI'ları için)
+      if (_backgroundTime != null) {
+        final duration = DateTime.now().difference(_backgroundTime!);
+        if (duration.inSeconds < 30) {
+          _backgroundTime = null;
+          return; // Kilitleme
+        }
+      }
+
+      // 30+ saniye arka planda kaldı → kilitle
+      _backgroundTime = null;
       setState(() {
         _pinScreenKey = UniqueKey();
       });
@@ -101,7 +121,7 @@ class _PasswordKeeperAppState extends State<PasswordKeeperApp>
     final textTheme = GoogleFonts.interTextTheme();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Password Vault',
+      title: 'LocalPass',
       theme: buildLightTheme(textTheme: textTheme),
       darkTheme: buildDarkTheme(textTheme: textTheme),
       themeMode: _themeMode,
@@ -113,13 +133,22 @@ class _PasswordKeeperAppState extends State<PasswordKeeperApp>
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale('en', ''), Locale('tr', '')],
-      home: PinLockScreen(
-        key: _pinScreenKey,
-        onThemeChanged: _changeTheme,
-        onLocaleChanged: _changeLocale,
-        currentThemeMode: _themeMode,
-        currentLocale: _locale,
-      ),
+      home: widget.enablePinLock
+          ? PinLockScreen(
+              key: _pinScreenKey,
+              onThemeChanged: _changeTheme,
+              onLocaleChanged: _changeLocale,
+              currentThemeMode: _themeMode,
+              currentLocale: _locale,
+            )
+          : HomeShell(
+              pinService: _pinService,
+              onLockRequested: () {},
+              onThemeChanged: _changeTheme,
+              onLocaleChanged: _changeLocale,
+              currentThemeMode: _themeMode,
+              currentLocale: _locale,
+            ),
     );
   }
 }

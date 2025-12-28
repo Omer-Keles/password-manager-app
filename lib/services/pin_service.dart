@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:crypto/crypto.dart';
+import 'package:crypto/crypto.dart' as crypto;
+import 'package:cryptography/cryptography.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class PinService {
@@ -13,6 +14,7 @@ class PinService {
 
   static const _pinHashKey = 'pin_hash';
   static const _pinSaltKey = 'pin_salt';
+  static const _masterKeySaltKey = 'master_key_salt';
 
   Future<bool> hasPin() async {
     final hash = await _storage.read(key: _pinHashKey);
@@ -24,6 +26,13 @@ class PinService {
     final hash = _hashPin(pin, salt);
     await _storage.write(key: _pinSaltKey, value: base64Encode(salt));
     await _storage.write(key: _pinHashKey, value: hash);
+
+    // Master key için de salt oluştur (ilk PIN kaydında)
+    final masterKeySalt = _generateSalt();
+    await _storage.write(
+      key: _masterKeySaltKey,
+      value: base64Encode(masterKeySalt),
+    );
   }
 
   Future<bool> verifyPin(String pin) async {
@@ -40,6 +49,7 @@ class PinService {
   Future<void> clear() async {
     await _storage.delete(key: _pinSaltKey);
     await _storage.delete(key: _pinHashKey);
+    await _storage.delete(key: _masterKeySaltKey);
   }
 
   List<int> _generateSalt() {
@@ -47,7 +57,7 @@ class PinService {
   }
 
   String _hashPin(String pin, List<int> salt) {
-    final digest = sha256.convert([...salt, ...utf8.encode(pin)]);
+    final digest = crypto.sha256.convert([...salt, ...utf8.encode(pin)]);
     return digest.toString();
   }
 
@@ -58,5 +68,28 @@ class PinService {
       diff |= a.codeUnitAt(i) ^ b.codeUnitAt(i);
     }
     return diff == 0;
+  }
+
+  /// PIN'den master key türet (PBKDF2 ile)
+  /// Bu key veri şifreleme/çözme için kullanılır
+  Future<SecretKey> deriveMasterKey(String pin) async {
+    // Master key salt'ını oku
+    final saltStr = await _storage.read(key: _masterKeySaltKey);
+    if (saltStr == null) {
+      throw Exception('Master key salt bulunamadı');
+    }
+    final salt = base64Decode(saltStr);
+
+    // PBKDF2 ile key türet
+    final pbkdf2 = Pbkdf2(
+      macAlgorithm: Hmac.sha256(),
+      iterations: 100000, // Backup ile aynı
+      bits: 256,
+    );
+
+    return pbkdf2.deriveKey(
+      secretKey: SecretKey(utf8.encode(pin)),
+      nonce: salt,
+    );
   }
 }

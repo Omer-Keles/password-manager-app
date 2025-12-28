@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "appName": "Password Vault",
+  "appName": "LocalPass",
   "vault": "Vault",
   "passwords": "Passwords",
   "twoFactorAuth": "2FA / TOTP",

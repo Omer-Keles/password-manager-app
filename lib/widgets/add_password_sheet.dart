@@ -172,6 +172,7 @@ class _AddPasswordSheetState extends State<AddPasswordSheet> {
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
+                  key: const Key('add_password_category'),
                   value: _selectedCategory,
                   decoration: InputDecoration(
                     labelText: l10n.category,
@@ -191,6 +192,7 @@ class _AddPasswordSheetState extends State<AddPasswordSheet> {
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
+                  key: const Key('add_password_title'),
                   controller: _labelController,
                   textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
@@ -206,6 +208,7 @@ class _AddPasswordSheetState extends State<AddPasswordSheet> {
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
+                  key: const Key('add_password_username'),
                   controller: _usernameController,
                   textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
@@ -215,6 +218,7 @@ class _AddPasswordSheetState extends State<AddPasswordSheet> {
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
+                  key: const Key('add_password_password'),
                   controller: _passwordController,
                   obscureText: _obscurePassword,
                   decoration: InputDecoration(
@@ -253,6 +257,7 @@ class _AddPasswordSheetState extends State<AddPasswordSheet> {
                 SizedBox(
                   width: double.infinity,
                   child: FilledButton(
+                    key: const Key('add_password_save'),
                     onPressed: _submit,
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
